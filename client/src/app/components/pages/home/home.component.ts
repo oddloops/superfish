@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Notebook } from '../../../shared/models/Notebook';
 import { NotebookService } from '../../../services/notebook.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +10,19 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   notebooks:Notebook[] = [];
 
-  constructor(private notebookService:NotebookService) {
-    this.notebooks = notebookService.getNotebooks();
-   }
+  constructor(private notebookService:NotebookService, private route: ActivatedRoute) {}
 
-  ngOnInit() {
-
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      if (params['searchTerm']) {
+        this.notebooks = this.notebookService.getNotebooksBySearch(params['searchTerm']);
+      } else {
+        this.notebooks = this.notebookService.getNotebooks();
+      }
+    });
   }
 }
