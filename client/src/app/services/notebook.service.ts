@@ -11,4 +11,8 @@ export class NotebookService {
   getNotebooks():Notebook[] {
     return sample_notebook;
   }
+
+  getNotebooksBySearch(searchTerm: string): Notebook[] {
+    return this.getNotebooks().filter(notebook => notebook.title.toLowerCase().includes(searchTerm.toLowerCase()));
+  }
 }
