@@ -3,10 +3,11 @@ import { Notebook } from '../../../shared/models/Notebook';
 import { NotebookService } from '../../../services/notebook.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NoContentComponent } from "../../partials/no-content/no-content.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, NoContentComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

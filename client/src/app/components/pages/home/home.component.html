@@ -1,3 +1,9 @@
+<app-no-content
+  [visible]="!notebooks || !notebooks.length"
+  notFoundMessage="No notebooks!"
+  resetText="clear search"
+></app-no-content>
+
 <ul>
   <li *ngFor="let notebook of notebooks">
     <a routerLink="/notebook/{{ notebook.id}}">
