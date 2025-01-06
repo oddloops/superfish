@@ -15,4 +15,8 @@ export class NotebookService {
   getNotebooksBySearch(searchTerm: string): Notebook[] {
     return this.getNotebooks().filter(notebook => notebook.title.toLowerCase().includes(searchTerm.toLowerCase()));
   }
+
+  getNotebookById(id: number): Notebook {
+    return this.getNotebooks().find(notebook => notebook.id == id) ?? new Notebook();
+  }
 }
