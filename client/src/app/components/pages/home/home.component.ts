@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe({
       next: (params) => {
-      let notebooksObservable: Observable<Notebook[]>;
+        let notebooksObservable: Observable<Notebook[]>;
         if (params['searchTerm']) {
           notebooksObservable = this.notebookService.getNotebooksBySearch(params['searchTerm']);
         } else {
