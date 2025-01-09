@@ -17,7 +17,9 @@ export class NotebookComponent implements OnInit {
   ngOnInit () {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        this.notebook = params['id'];
+        this.services.getNotebookById(params['id']).subscribe((serverNotebook) => {
+          this.notebook = serverNotebook;
+        })
       }
     });
   }
