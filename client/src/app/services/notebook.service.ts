@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Notebook } from '../shared/models/Notebook';
-import { sample_notebook } from '../../sample/data';
+import { NOTEBOOKS_BY_ID_URL, NOTEBOOKS_BY_SEARCH_URL, NOTEBOOKS_URL } from '../shared/constants/urls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotebookService {
 
-  constructor() { }
-  getNotebooks():Notebook[] {
-    return sample_notebook;
+  constructor(private http: HttpClient) { }
+
+  getNotebooks(): Observable<Notebook[]> {
+    return this.http.get<Notebook[]>(NOTEBOOKS_URL);
   }
 
-  getNotebooksBySearch(searchTerm: string): Notebook[] {
-    return this.getNotebooks().filter(notebook => notebook.title.toLowerCase().includes(searchTerm.toLowerCase()));
+  getNotebooksBySearch(searchTerm: string): Observable<Notebook[]> {
+    return this.http.get<Notebook[]>(NOTEBOOKS_BY_SEARCH_URL + searchTerm)
   }
 
-  getNotebookById(id: number): Notebook {
-    return this.getNotebooks().find(notebook => notebook.id == id) ?? new Notebook();
+  getNotebookById(id: number): Observable<Notebook> {
+    return this.http.get<Notebook>(NOTEBOOKS_BY_ID_URL + id);
   }
 }
