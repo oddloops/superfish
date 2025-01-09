@@ -4,6 +4,7 @@ import { NotebookService } from '../../../services/notebook.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NoContentComponent } from "../../partials/no-content/no-content.component";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,23 @@ export class HomeComponent implements OnInit {
   constructor(private notebookService:NotebookService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      if (params['searchTerm']) {
-        this.notebooks = this.notebookService.getNotebooksBySearch(params['searchTerm']);
-      } else {
-        this.notebooks = this.notebookService.getNotebooks();
+    this.route.params.subscribe({
+      next: (params) => {
+      let notebooksObservable: Observable<Notebook[]>;
+        if (params['searchTerm']) {
+          notebooksObservable = this.notebookService.getNotebooksBySearch(params['searchTerm']);
+        } else {
+          notebooksObservable = this.notebookService.getNotebooks();
+        }
+        notebooksObservable.subscribe({
+          next: (serverNotebooks) => {
+            this.notebooks = serverNotebooks;
+          },
+          error: (err) => {
+            console.error('Error in route parameters:', err);
+          }
+        })
       }
-    });
+    })
   }
 }
