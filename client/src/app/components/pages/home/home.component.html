@@ -1,0 +1,21 @@
+<app-no-content
+  [visible]="!notebooks || !notebooks.length"
+  notFoundMessage="No notebooks!"
+  resetText="clear search"
+></app-no-content>
+
+<ul>
+  <li *ngFor="let notebook of notebooks">
+    <a routerLink="/notebook/{{ notebook.id}}">
+      <img [src]="notebook.imageUrl" [alt]="notebook.id">
+      <div class="content">
+        <div class="name">
+          {{ notebook.title }}
+        </div>
+        <span class="favorite {{notebook.favorite? '':'not'}}">
+          T
+        </span>
+      </div>
+    </a>
+  </li>
+</ul>
