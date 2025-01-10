@@ -1,2 +1,2 @@
 # superfish
-A website to better learn the MEAN stack
+A website to help me learn the MEAN stack
