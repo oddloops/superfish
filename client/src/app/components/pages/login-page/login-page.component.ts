@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { UserService } from '@services/User/user.service';
 @Component({
   selector: 'app-login-page',
   imports: [ReactiveFormsModule, CommonModule],
@@ -11,14 +13,23 @@ export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
   isSubmitted: boolean = false;
+  returnUrl: string = '';
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-      this.loginForm = this.formBuilder.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', Validators.required]
-      })
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+
+    this.returnUrl = this.activatedRoute.snapshot.queryParams["returnUrl"];
+    console.log(this.returnUrl);
   }
 
   get fc() {
@@ -32,6 +43,12 @@ export class LoginPageComponent implements OnInit {
       return;
     }
     console.log("Successful");
-    alert(`email: ${this.fc['email'].value}\npassword: ${this.fc['password'].value}`)
+
+    this.userService.login({
+      email: this.fc["email"].value,
+      password: this.fc["password"].value
+    }).subscribe(() => {
+      this.router.navigateByUrl(this.returnUrl);
+    });
   }
 }
