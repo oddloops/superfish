@@ -19,6 +19,7 @@ export class UserService {
     this.userObservable = this.userSubject.asObservable();
   }
 
+  // Login & Logout methods //
   login(userLogin: IUserLogin): Observable<User> {
     return this.httpClient.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
@@ -44,6 +45,13 @@ export class UserService {
     );
   }
 
+  logout(): void {
+    this.userSubject.next(new User());
+    localStorage.removeItem(USER_KEY);
+    window.location.reload();
+  }
+
+  // Set the user into local storage //
   private setUserToLocalStorage(user: User): void {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
