@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { UserService } from '@services/user/user.service';
+import { TextInputComponent } from "../../partials/text-input/text-input.component";
+import { DefaultButtonComponent } from '@components/partials/default-button/default-button.component';
 @Component({
   selector: 'app-login-page',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, TextInputComponent, DefaultButtonComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
@@ -29,7 +31,6 @@ export class LoginPageComponent implements OnInit {
     });
 
     this.returnUrl = this.activatedRoute.snapshot.queryParams["returnUrl"];
-    console.log(this.returnUrl);
   }
 
   get fc() {
