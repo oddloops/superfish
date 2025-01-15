@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Notebook } from '../shared/models/Notebook';
-import { NOTEBOOKS_BY_ID_URL, NOTEBOOKS_BY_SEARCH_URL, NOTEBOOKS_URL } from '../shared/constants/urls';
+import { Notebook } from '../../shared/models/Notebook';
+import { NOTEBOOKS_BY_ID_URL, NOTEBOOKS_BY_SEARCH_URL, NOTEBOOKS_URL } from '../../shared/constants/urls';
 
 @Injectable({
   providedIn: 'root'

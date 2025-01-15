@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Notebook } from '../../../shared/models/Notebook';
-import { NotebookService } from '../../../services/notebook.service';
+import { Notebook } from '@shared/models/Notebook';
+import { NotebookService } from '@services/notebook/notebook.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NoContentComponent } from "../../partials/no-content/no-content.component";
+import { NoContentComponent } from '@components/partials/no-content/no-content.component';
 import { Observable } from 'rxjs';
 
 @Component({

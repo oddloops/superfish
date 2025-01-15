@@ -1,0 +1,11 @@
+h1 {
+  color: #d85e5e;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 5rem;
+}

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="details">
+    <h1>Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <text-input
+        [control]="fc['email']"
+        [showErrorWhen]="isSubmitted"
+        type="Email"
+        label="Email"
+        >
+      </text-input>
+      <text-input
+        [control]="fc['password']"
+        [showErrorWhen]="isSubmitted"
+        type="Password"
+        label="Password">
+      </text-input>
+      <default-button
+        text="Login"
+        color="#ffffff"
+        bgColor="#ea4c89"
+      ></default-button>
+    </form>
+  </div>
+</div>
