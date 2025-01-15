@@ -2,28 +2,24 @@
   <div class="details">
     <h1>Login</h1>
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
-      <div class="input-container">
-        <label>Email</label>
-        <div>
-          <input type="email" placeholder="Email" formControlName="email"/>
-        </div>
-      </div>
-      <div class="error-list" *ngIf="fc['email'].errors && isSubmitted">
-        <small *ngIf="fc['email'].errors['required']">Email is required</small>
-        <small *ngIf="fc['email'].errors['invalid']">Email is invalid</small>
-      </div>
-      <div class="input-container">
-        <label>Password</label>
-        <div>
-          <input type="password" placeholder="Password" formControlName="password"/>
-        </div>
-      </div>
-      <div class="error-list" *ngIf="fc['password'].errors && isSubmitted">
-        <small *ngIf="fc['password'].errors['required']">Password is required</small>
-      </div>
-      <div class="button">
-        <button type="submit">Login</button>
-      </div>
+      <text-input
+        [control]="fc['email']"
+        [showErrorWhen]="isSubmitted"
+        type="Email"
+        label="Email"
+        >
+      </text-input>
+      <text-input
+        [control]="fc['password']"
+        [showErrorWhen]="isSubmitted"
+        type="Password"
+        label="Password">
+      </text-input>
+      <default-button
+        text="Login"
+        color="#ffffff"
+        bgColor="#ea4c89"
+      ></default-button>
     </form>
   </div>
 </div>
