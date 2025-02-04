@@ -20,6 +20,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Server is live!");
 });
 
+app.use("/assets", express.static("assets"));
 app.use("/notebooks", notebookRouter);
 app.use("/users", usersRouter);
 
