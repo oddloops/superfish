@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Notebook } from '@shared/models/Notebook';
-import { NotebookService } from '@services/notebook/notebook.service';
+import { NotebookService } from '@services/Notebook/notebook.service';
 
 @Component({
   selector: 'app-notebook',
