@@ -1,8 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 
-import { notebookRouter } from "./routes/notebooks.routes";
-import { usersRouter } from "./routes/users.routes";
+import notebookRouter from "./routes/notebooks.routes";
+import usersRouter from "./routes/users.routes";
 
 // ***** Express App ***** //
 const app: Express = express();
