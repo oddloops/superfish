@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Notebook } from '@shared/models/Notebook';
-import { NotebookService } from '@services/notebook/notebook.service';
+import { NotebookService } from '@services/Notebook/notebook.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NoContentComponent } from '@components/partials/no-content/no-content.component';

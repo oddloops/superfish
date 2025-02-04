@@ -2,7 +2,7 @@ import *  as express from "express";
 import { sample_notebook, sample_users } from "src/sample/data";
 import generate_token from "src/util/generate-token";
 
-export const usersRouter = express.Router();
+const usersRouter = express.Router();
 
 // Get all users
 usersRouter.get("/", async(_req, res) => {
@@ -23,3 +23,5 @@ usersRouter.post("/login", (req, res) => {
     res.status(400).send("Username/Password is invalid");
   }
 });
+
+export default usersRouter;

@@ -1,7 +1,7 @@
 import *  as express from "express";
 import { sample_notebook } from "src/sample/data";
 
-export const notebookRouter = express.Router();
+const notebookRouter = express.Router();
 
 // Get all notebooks
 notebookRouter.get("/", async(_req, res) => {
@@ -33,3 +33,5 @@ notebookRouter.get("/id/:notebookId", async(_req, res) => {
     res.status(500).send(error instanceof Error ? error.message : "Unknown error");
   }
 });
+
+export default notebookRouter;

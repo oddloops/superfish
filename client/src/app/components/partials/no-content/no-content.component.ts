@@ -12,5 +12,5 @@ export class NoContentComponent {
   @Input() visible: boolean = false;
   @Input() notFoundMessage: string = '';
   @Input() resetText: string = '';
-  private _resetLink: string = '/';
+   _resetLink: string = '/';
 }
