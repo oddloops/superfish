@@ -1,5 +1,5 @@
-import *  as express from "express";
-import { sample_notebook, sample_users } from "src/sample/data";
+import express from "express";
+import { sample_users } from "src/sample/data";
 import generate_token from "src/util/generate-token";
 
 const usersRouter = express.Router();
