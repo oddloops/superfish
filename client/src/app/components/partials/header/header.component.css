@@ -2,11 +2,11 @@ header {
   position: relative;
   background: white;
   padding: 0;
-  border-bottom: 1px solid #cc79a7;
+  border-bottom: 1px solid #9B8AC3;
 }
 
 a {
-  color: #d85e5e;
+  color: #18239f;
 }
 
 a.logo {
@@ -30,7 +30,7 @@ ul a {
 }
 
 ul a:hover {
-  background: #fb7b7b;
+  background: #18239f;
   color: white;
   cursor: pointer;
 }
