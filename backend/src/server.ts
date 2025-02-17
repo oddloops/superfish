@@ -1,8 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 
-import notebookRouter from "./routes/notebooks.routes";
-import usersRouter from "./routes/users.routes";
+import apiRouter from "./routes/api";
 
 // ***** Express App ***** //
 const app: Express = express();
@@ -21,7 +20,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/assets", express.static("assets"));
-app.use("/notebooks", notebookRouter);
-app.use("/users", usersRouter);
+app.use("/api/v0/", apiRouter)
 
 export default app;

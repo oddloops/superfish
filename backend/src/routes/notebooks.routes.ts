@@ -1,4 +1,4 @@
-import *  as express from "express";
+import express from "express";
 import { sample_notebook } from "src/sample/data";
 
 const notebookRouter = express.Router();
