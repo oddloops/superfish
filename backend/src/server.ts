@@ -1,8 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
-
+import mongoConnection from "./config/database.config";
 import apiRouter from "./routes/api";
 
+mongoConnection();
 // ***** Express App ***** //
 const app: Express = express();
 
